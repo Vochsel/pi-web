@@ -1,0 +1,30 @@
+{
+  "name": "@pi-web/client",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./shared": {
+      "types": "./dist/shared.d.ts",
+      "default": "./dist/shared.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "default": "./dist/node.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/shared.ts src/node.ts --format esm --dts --clean",
+    "dev": "tsup src/index.ts src/shared.ts src/node.ts --format esm --dts --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "bun test src"
+  }
+}
